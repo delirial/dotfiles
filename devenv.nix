@@ -1,10 +1,8 @@
+# this is the first input and the first function use by devenv
 { pkgs, ... }:
-
 {
-  # https://devenv.sh/basics/
-  env.GREET = "devenv";
+  name="dotfiles";
 
-  # https://devenv.sh/packages/
   packages = [
   	pkgs.git
 	pkgs.neovim 
@@ -17,19 +15,11 @@
 	pkgs.tmuxPlugins.resurrect
 	pkgs.vimPlugins.packer-nvim
 	pkgs.starship
+	pkgs.cmake
 	];
 
   starship.enable=true;
-  # https://devenv.sh/scripts/
-  scripts.hello.exec = "echo hello from $GREET";
-  scripts.start.exec = ''
-    echo "Enter starship"
-    eval "$(starship init bash)"
-  '';
-
-  enterShell = ''
-    start
-  '';
+  devcontainer.enable = true;
 
   # https://devenv.sh/languages/
   # languages.nix.enable = true;
